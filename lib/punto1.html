@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <title>Servidor Web ESP32</title>
+  <style>
+    body {  
+        background-color: #ecf0f1;
+        text-align: center; 
+        background-attachment: fixed;
+    }
+    .titulo { 
+        font-family: Arial black; 
+        font-weight: bold;  
+        font-size: 45px; 
+        color: #2c3e50;
+        text-decoration: underline; 
+    }
+    .estado{
+        font-weight: bold;
+    }
+    .button{
+        width: 180px;
+        height: 60px;
+        border-color: 1px;
+        border-radius: 15px;
+        font-weight: bold;
+    }
+    .alta{
+        background-color: #f39c12;
+    }
+    .media{
+        background-color: #27ae60;
+    }
+        .baja{
+            background-color: #2980b9;
+    }
+    .apagado{
+        background-color: #c0392b;
+    }
+  </style>
+</head>
+<body>
+  <h1 class='titulo'>CONTROL DE VENTILADOR</h1>
+   <span class="estado">Velocidad Actual: __VELOCIDAD_ACUTAL__</span>
+  <p><a href='/alta'><button class='button alta'>Alta</button></a></p>
+  <p><a href='/media'><button class='button media'>Media</button></a></p>
+  <p><a href='/baja'><button class='button baja'>Baja</button></a></p>
+  <p><a href='/apagado'><button class='button apagado'>Apagado</button></a></p>
+</body>
+</html>
