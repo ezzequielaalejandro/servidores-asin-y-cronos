@@ -2,12 +2,11 @@
 #include <ESPAsyncWebServer.h>
 #include <AsyncTCP.h>
 #include <WiFi.h>
-#include <WebServer.h>
 
 const char* ssid = "CESJT";
 const char* password = "itisjtsmg";
 
-WebServer server(80);
+AsyncWebServer server(80);
 
   //en analog.write el maximo de salida es de 255, osea, 0 apagado y 255 alta
 int salida_ventilador = 5; 
@@ -120,7 +119,7 @@ void setup() {
     pagina.replace("__VELOCIDAD_ACUTAL__", "MEDIA");
     analogWrite(salida_ventilador, medio);
 
-    request -> redirect("/") //envio de pagina de manera asincrona
+    request -> redirect("/"); //envio de pagina de manera asincrona
   });
   server.on("/baja", HTTP_GET, [] (AsyncWebServerRequest *request){
     String pagina = pagina_template;
@@ -128,7 +127,7 @@ void setup() {
     pagina.replace("__VELOCIDAD_ACUTAL__", "BAJA");
     analogWrite(salida_ventilador, lento);
 
-    request -> redirect("/") //envio de pagina de manera asincrona
+    request -> redirect("/"); //envio de pagina de manera asincrona
   });
   server.on("/apagado", HTTP_GET, [] (AsyncWebServerRequest *request){
     String pagina = pagina_template;
@@ -136,7 +135,7 @@ void setup() {
     pagina.replace("__VELOCIDAD_ACUTAL__", "APAGADO");
     analogWrite(salida_ventilador, 0);
 
-    request -> redirect("/") //envio de pagina de manera asincrona
+    request -> redirect("/"); //envio de pagina de manera asincrona
   });
   
 
