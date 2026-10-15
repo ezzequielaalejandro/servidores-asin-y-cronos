@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset ="UTF-8">
+        <title>SISTEMA DE REFRIGERACION</title>
+        <style>
+            body{
+                text-align: center;
+                font-family: Arial Black;
+                background-color: #ecf0f1;
+                font-size: 34px;
+            }
+
+            .panel-temp{
+                width: 550px;
+                padding: 30px;
+                border-radius: 20px;
+                font-size: 28px;
+                background-color: __COLOR_PANEL__ ;
+                color: __COLOR_TEXTO__ ;
+            }
+
+        </style>
+        <body>
+            <h1>SISTEMA DE REFRIGERACION</h1>
+            <div class="panel-temp">
+                <a>MODO ACTUAL: __MODO_ACTUAL__</a>
+                <a>TEMPERATURA OBJETIVO: __TEMPERATURA_OBJETIVO_</a>
+                <a>ESTADO VENTILADOR: __ESTADO_VENTILADOR__</a>
+            </div>
+
+            <button><a href="/detenido">Detenido</a></button>
+            <button><a href="/ventilacion">Ventilacion</a></button>
+            <button><a href="/intensivo">Intensivo</a></button>
+            
+        </body>
+    </head>
+</html>

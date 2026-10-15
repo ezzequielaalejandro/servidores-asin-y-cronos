@@ -11,6 +11,7 @@ AsyncWebServer server (80);
 int notado = 10;
 int re = 50, mi = 80, sol = 120, la = 180, silencio = 0;
 int buzzer = 17;
+String nota="XXXX";
 const char pagina_template [] PROGMEM = R"rawliteral(
 <!DOCTYPE html>
 <html>
@@ -88,43 +89,39 @@ void setup(){
     server.on("/", HTTP_GET, [] (AsyncWebServerRequest *request){
         String pagina = pagina_template;
 
+        pagina.replace("__NOTA_SONANDO__", nota);
         request -> send(200, "text/html", pagina); //envio la pagina
     });
 
     server.on("/do", HTTP_GET, [] (AsyncWebServerRequest *request){
-        String pagina = pagina_template;
         analogWrite(buzzer, notado);
-        pagina.replace("__NOTA_SONANDO__", "DO");
+        nota="DO";
         request -> redirect ("/");
     });
     server.on("/re", HTTP_GET, [] (AsyncWebServerRequest *request){
-        String pagina = pagina_template;
+        nota ="RE";
         analogWrite(buzzer, re);
-        pagina.replace("__NOTA_SONANDO__", "RE");
+        nota ="RE";
         request -> redirect ("/");
     });
     server.on("/mi", HTTP_GET, [] (AsyncWebServerRequest *request){
-        String pagina = pagina_template;
+        nota ="MI";
         analogWrite(buzzer, mi);
-        pagina.replace("__NOTA_SONANDO__", "MI");
         request -> redirect ("/");
     });
     server.on("/sol", HTTP_GET, [] (AsyncWebServerRequest *request){
-        String pagina = pagina_template;
+        nota ="SOL";
         analogWrite(buzzer, sol);
-        pagina.replace("__NOTA_SONANDO__", "SOL");
         request -> redirect ("/");
     });
     server.on("/la", HTTP_GET, [] (AsyncWebServerRequest *request){
-        String pagina = pagina_template;
+        nota = "LA";
         analogWrite(buzzer, la);
-        pagina.replace("__NOTA_SONANDO__", "LA");
         request -> redirect ("/");
     });
-    server.on("/la", HTTP_GET, [] (AsyncWebServerRequest *request){
-        String pagina = pagina_template;
+    server.on("/silencio", HTTP_GET, [] (AsyncWebServerRequest *request){
+        nota="silencio";
         analogWrite(buzzer, silencio);
-        pagina.replace("__NOTA_SONANDO__", "SILENCIO");
         request -> redirect ("/");
     });
 
